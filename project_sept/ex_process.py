@@ -7,16 +7,16 @@ from multiprocessing import Process
 class Dinamic_Graph:
 
     def __init__(self, filename):
-        with open(filename) as fn:
-            strings = fn.readlines()
-        self.strings = strings
+        self.filename = filename
 
     def calculate_and_output(self):
-        for i in self.strings:
+        with open(self.filename) as fn:
+            strings = fn.readlines()
+        for i in strings:
             lst = i.split()
             date = lst[2][6:] + '.' + lst[2][4:6] + '.' + lst[2][0:4]
             val_2 = float(lst[4])
-            if self.strings.index(i) == 0:
+            if strings.index(i) == 0:
                 val_1 = val_2
                 delta = 0
             else:
